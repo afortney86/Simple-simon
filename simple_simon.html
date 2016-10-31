@@ -1,22 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Simple simon</title>
-
     <link href="cssbootstrap/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: darkseagreen;
+        }
+
+        button {
+
+        }
+
+        #game-board {
+            position: absolute; /* Bend this div to my will */
+            height: 82vh;
+            width: 82vh;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            background-color: #000;
+            /*border: 5px solid #FFFFFF;*/
+            border-radius: 50%;
+            box-shadow: 1px 1px 5px #303030;
+        }
+
+        #inner-ring {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding: 0;
+            background-color: #000;
+            border-radius: 50%;
+            /*border: 5px solid white;*/
+        }
+
+        #inner-ring {
+            height: 35vh;
+            width: 35vh;
+            box-shadow: inset 1px 1px 3px #303030;
+        }
+
+        .big-button {
+            height: 38vh;
+            width: 38vh;
+            border: none;
+        }
+
+        #red {
+            background-color: crimson;
+            border-radius: 100% 5px 5px;
+            margin-top: 2.5vh;
+        }
+
+        #green {
+            background-color: green;
+            border-radius: 5px 100% 5px 5px;
+            margin-top: 2.5vh;
+        }
+
+        #blue {
+            background-color: blue;
+            border-radius: 5px 5px 5px 100%;
+        }
+
+        #yellow {
+            background-color: yellow;
+            border-radius: 5px 5px 100% 5px;
+        }
+
+        .well{
+            width: 50%;
+            margin: 0 auto 15px;
+            font-size: xx-large;
+            border-width: 3px;
+        }
+
+    </style>
 </head>
 <body>
-<div class="container">
+<!-- HTML for Buttons -->
+    <div class="container-fluid" id="game-board">
+        <div class="row">
+            <button class="big-button" id="red"></button>
+            <button class="big-button" id="green"></button>
+        </div>
+        <div class="row">
+            <button class="big-button" id="blue"></button>
+            <button class="big-button" id="yellow"></button>
+        </div>
+    </div>
 
-</div>
+    <div class="container" id="inner-ring">
+        <h1>Simon</h1>
+            <div class="well"><span id="display">--</span></div>
+        <button id="btn-start">Start</button>
+    </div>
+
+
 
 
 <script src="jsbootstrap/jquery.min.js"></script>
 <script src="jsbootstrap/bootstrap.min.js"></script>
 <script>
+    "use strict";
+
 
 </script>
 </body>
