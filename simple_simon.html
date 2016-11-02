@@ -56,6 +56,7 @@
             height: 38vh;
             width: 38vh;
             border: none;
+            opacity: 0.6;
         }
 
         #red {
@@ -80,7 +81,7 @@
             border-radius: 5px 5px 100% 5px;
         }
 
-        .well{
+        .well {
             width: 50%;
             margin: 0 auto 15px;
             font-size: xx-large;
@@ -91,32 +92,118 @@
 </head>
 <body>
 <!-- HTML for Buttons -->
-    <div class="container-fluid" id="game-board">
-        <div class="row">
-            <button class="big-button" id="red"></button>
-            <button class="big-button" id="green"></button>
-        </div>
-        <div class="row">
-            <button class="big-button" id="blue"></button>
-            <button class="big-button" id="yellow"></button>
-        </div>
+<div class="container-fluid" id="game-board">
+    <div class="row">
+        <button class="big-button" id="red"></button>
+        <button class="big-button" id="green"></button>
     </div>
-
-    <div class="container" id="inner-ring">
-        <h1>Simon</h1>
-            <div class="well"><span id="display">--</span></div>
-        <button id="btn-start">Start</button>
+    <div class="row">
+        <button class="big-button" id="blue"></button>
+        <button class="big-button" id="yellow"></button>
     </div>
+</div>
 
-
+<div class="container" id="inner-ring">
+    <h1>Simon</h1>
+    <div class="well"><span id="display">--</span></div>
+    <button id="btn-start">Start</button>
+</div>
 
 
 <script src="jsbootstrap/jquery.min.js"></script>
 <script src="jsbootstrap/bootstrap.min.js"></script>
 <script>
     "use strict";
+    //inital game state
+    var playerPressCount = 0;
+    var sequence = [];
 
+
+
+    // "game state" diagrams, are basically flow charts which have every "state" of the game.
+
+    //Starting the game.
+    $("#btn-start").click(function() {
+        playerPressCount = 0;
+        sequence.length = 0;
+        simonsTurn();
+    console.log (sequence);
+        //alert('you started the game');
+    });
+    function simonsTurn() {
+        pushToSequence();
+        var i = 0;
+        var intervalId = setInterval(function () {
+            animateSequence(i);
+            i++;
+            if(i >= sequence.length){
+                clearInterval(intervalId);
+            }
+        },1000)
+    }
+
+    // "displaying" the pattern
+
+    // gathering user input (button press)
+
+
+    // checking if button press is correct
+
+
+    // game over
+    function gameOver() {
+        alert("Game Over")
+    }
+
+    // game won
+
+//function to push to sequence array
+    function pushToSequence() { //function to push to sequence array
+        var buttonElements = ["red", "green", "blue", "yellow"];
+        var btnColors = buttonElements[Math.floor(Math.random() * buttonElements.length)];
+        sequence.push(btnColors);
+    }
+    //function to animate
+    function animate(divId) {
+        if (divId == "#red") {
+            $("#red").css("opacity", "1");
+            setTimeout(function () {
+                $("#red").css("opacity", "0.6");
+            }, 200);
+        } else if (divId == "#green") {
+            $("#green").css("opacity", "1");
+            setTimeout(function () {
+                $("#green").css("opacity", "0.6");
+            }, 200);
+        } else if (divId == "#blue") {
+            $("#blue").css("opacity", "1");
+            setTimeout(function () {
+                $("#blue").css("opacity", "0.6");
+            }, 200);
+        } else if (divId == "#yellow") {
+            $("#yellow").css("opacity", "1");
+            setTimeout(function () {
+                $("#yellow").css("opacity", "0.6");
+            }, 200);
+        }
+    }
+//function to animate sequence
+    function animateSequence(i) {
+        if(sequence[i] == "red"){
+            animate("#red");
+        }else if(sequence[i] == "green"){
+            animate("#green");
+        }else if(sequence[i] == "blue"){
+            animate("#blue")
+        }else if(sequence [i] == "yellow"){
+            animate("#yellow")
+        }
+    }
 
 </script>
 </body>
 </html>
+
+<!-- Some problems ive had:
+ 1. conseptulizing, getting what needs done first, second, ect..
+ 2. -->
